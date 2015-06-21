@@ -1,4 +1,4 @@
-manage keys with ansible
+# manage keys with ansible
 
 it manages authorized_keys in a different directory, root owned (so the user can't add and remove keys), and uses a template
 and then all you need to do is add/remove keys from defaults/main.yml, and it'll do the magic for you
