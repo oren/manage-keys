@@ -1,0 +1,13 @@
+authorized_keys: /etc/ssh/authorized_keys
+users:
+  - name: root
+    pass: passwordhash
+    ugid: 0
+    pubkeys:
+      - key1
+      - key2
+  - name: user1
+    ugid: 1000
+    pubkeys:
+      - key1
+      - key2

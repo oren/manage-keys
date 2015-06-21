@@ -1,0 +1,4 @@
+{% for user in item.pubkeys %}
+environment="GECOS={{ user }}" {{ lookup('file', user + '.pub') }}
+{% endfor %}
+

@@ -1,0 +1,34 @@
+---
+- name: group | {{ item.name }}
+  group: >
+    name={{ item.name }}
+    gid={{ item.ugid }}
+    state=present
+  with_items: users
+
+- name: user | {{ item.name }}
+  user: >
+    name={{ item.name }}
+    uid={{ item.ugid }}
+    group={{ item.name }}
+    password={{ item.pass | default('!!') }}
+    comment={{ item.name }}
+    shell={{ item.shell | default('/bin/bash') }}
+    state=present
+  with_items: users
+
+- name: file | {{ authorized_keys }}
+  file: >
+    path={{ authorized_keys }}
+    state=directory
+    mode=0755
+
+- name: template | {{ item.name }}
+  template: >
+    src=authorized_keys.j2
+    dest={{ authorized_keys }}/{{ item.name }}
+    owner=root
+    group=root
+    mode=0644
+  with_items: users
+

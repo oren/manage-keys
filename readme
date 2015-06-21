@@ -1,0 +1,8 @@
+manage keys with ansible
+
+it manages authorized_keys in a different directory, root owned (so the user can't add and remove keys), and uses a template
+and then all you need to do is add/remove keys from defaults/main.yml, and it'll do the magic for you
+unfortunately the authorized_keys module isn't good with removals
+so after you get it setup... you'd just have to add users to defaults/main.yml... ie: key1  and then add key1.pub into files/
+
+http://pastebin.com/Xu5JF9S4
